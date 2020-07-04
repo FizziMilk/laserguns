@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8515af94958506246b09fabe203efead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 25
   tiltAngle: -25
   rotationSpeed: 5
   fireRate: 0.2

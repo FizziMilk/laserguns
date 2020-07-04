@@ -12,10 +12,16 @@ public class GameManager : MonoBehaviour
     public GameObject fullHeart2;
     public GameObject fullHeart3;
     public GameObject restartButton;
+    public GameObject player;
+    
+    
+
+   
     // Start is called before the first frame update
     void Start()
     {
-        
+    
+     
     }
 
     // Update is called once per frame
@@ -62,6 +68,10 @@ public class GameManager : MonoBehaviour
             gameOverText.gameObject.SetActive(true);
             restartButton.gameObject.SetActive(true);
         
+    }
+    void SpawnGoldCoins()
+    {
+
     }
     public void Restart()
     {

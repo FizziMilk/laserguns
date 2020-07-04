@@ -10,12 +10,13 @@ public class SpawnManager : MonoBehaviour
     private float spawnInterval = 1.5f;
 
     public GameObject[] Enemies;
-    private GameManager gameManager;
+    public GameManager gameManager;
+    public GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("SpawnEnemy", startDelay, spawnInterval);
-        gameManager = GameObject.FindWithTag("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -24,7 +25,11 @@ public class SpawnManager : MonoBehaviour
         if (gameManager.gameOver == false)
         {
             Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 1, spawnPosZ);
-            Instantiate(Enemies[0], spawnPos, Enemies[0].transform.rotation);
+            var enemy = Instantiate(Enemies[0], spawnPos, Enemies[0].transform.rotation);
+            var ai = enemy.GetComponent<AIController>();
+
+            ai.gameManager = gameManager;
+            ai.player = player;
         }
     }
 }
