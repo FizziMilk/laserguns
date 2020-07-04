@@ -13,10 +13,13 @@ public class SpawnManager : MonoBehaviour
     public GameManager gameManager;
     public GameObject player;
 
+    public CoinPlosion coinPlosion;
+
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("SpawnEnemy", startDelay, spawnInterval);
+        
     }
 
     // Update is called once per frame
@@ -30,6 +33,7 @@ public class SpawnManager : MonoBehaviour
 
             ai.gameManager = gameManager;
             ai.player = player;
+            ai.onDeath.AddListener(coinPlosion.Explode);
         }
     }
 }

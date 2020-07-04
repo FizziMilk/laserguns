@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 //RequireComponent allows you to specify what the script needs to function. In this case, the script won't work if the
 // Spaceship doesn't have a Rigidbody and a Collider of some kind with triggers.
@@ -29,10 +31,18 @@ public class AIController : MonoBehaviour
     [Tooltip("Max turning angle towards the player")]
     public float maxTurnAngle;
 
+    public DeathEvent onDeath;
+
     public GameManager gameManager;
     public GameObject player;
 
     private Rigidbody body;
+
+    [Serializable]
+    public class DeathEvent : UnityEvent<Vector3>
+    {
+
+    }
 
 
 
@@ -41,7 +51,7 @@ public class AIController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        
+
 
         // If something is not set, throw error
         if (gameManager == null)
@@ -184,6 +194,8 @@ public class AIController : MonoBehaviour
         }
         if (other.GetComponent<BulletController>() != null)
         {
+            onDeath.Invoke(body.position);
+
             Destroy(other.gameObject);
             Destroy(gameObject);
 
