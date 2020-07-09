@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void coinPickup()
+    public void CoinPickup()
     {
         coinCount += 1;
 
