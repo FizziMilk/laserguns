@@ -27,6 +27,11 @@ namespace shoot
         public Rigidbody myRigidbody;
         private GameManager gameManager;
         public UnityEvent onShoot;
+        public UnityEvent coinPickup;
+
+        [Range(0f, 50f)]
+        [Tooltip("Coin pickup radius")]
+        public float coinRadius = 15f;
 
 
         /*public float smoothing = 5;
@@ -64,31 +69,6 @@ namespace shoot
 
             EulerRotate();
 
-            /* else MOUSE CONTROLS FOR LATER
-             {
-                 Vector3 pos = Input.mousePosition;
-                 pos.z = Camera.main.transform.position.y + 1;
-                 pos = Camera.main.ScreenToWorldPoint(pos);
-                 Vector3 origin = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-
-                 Vector2 currentPosition = new Vector3(pos.x, pos.z);
-                 Vector3 directionRaw = pos - origin;
-                 Debug.Log("directionRaw.magnitude=" + directionRaw.magnitude);
-
-                 Vector3 direction = directionRaw.normalized;
-
-                 smoothDirection = Vector3.MoveTowards(smoothDirection, direction, smoothing);
-
-                 direction = smoothDirection;
-                 Vector3 movement = new Vector3(direction.x, 0, direction.z);
-                 myRigidbody.velocity = movement * speed;
-             } */
-
-            //movementborder
-
-            // shoot controller
-
-
         }
         void EulerRotate()
         {
@@ -104,6 +84,14 @@ namespace shoot
                 Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
 
                 onShoot.Invoke();
+            }
+        }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (CompareTag("GoldCoin"))
+            {
+                coinPickup.Invoke();
+                Destroy(other.gameObject);
             }
         }
     }

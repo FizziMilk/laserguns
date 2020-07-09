@@ -15,8 +15,8 @@ public class CoinPlosion : MonoBehaviour
     public float offset = 0.5f;
     public UnityEvent onExplode;
 
-          
 
+    
     public void Explode(Vector3 at)
     {
         onExplode.Invoke();
@@ -35,5 +35,7 @@ public class CoinPlosion : MonoBehaviour
             rb.AddExplosionForce(explosionForce, pos, explosionRadius);
         }
 
+
     }
+    
 }

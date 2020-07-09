@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+
+
 
 public class GameManager : MonoBehaviour
 {
@@ -13,24 +16,30 @@ public class GameManager : MonoBehaviour
     public GameObject fullHeart3;
     public GameObject restartButton;
     public GameObject player;
-    
-    
+    public GameObject coinRb;
 
-   
-    // Start is called before the first frame update
-    void Start()
+    public TextMeshProUGUI scoreCounter;
+    public float coinCount;
+
+
+    void Awake()
     {
-    
-     
+
+       TMP_Text scoreCounter = GetComponent<TextMeshProUGUI>();
+    }
+     void Start()
+    {
+        float coinCount = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         HealthTracker();
+        scoreCounter.text = "Gold:" + coinCount;
     }
 
-   public void HealthTracker()
+    public void HealthTracker()
     {
         if (health > 3)
         {
@@ -63,16 +72,21 @@ public class GameManager : MonoBehaviour
     }
     void GameOver()
     {
-      
-            gameOver = true;
-            gameOverText.gameObject.SetActive(true);
-            restartButton.gameObject.SetActive(true);
-        
-    }
-    void SpawnGoldCoins()
-    {
+
+        gameOver = true;
+        gameOverText.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
 
     }
+
+    public void coinPickup()
+    {
+        coinCount += 1;
+
+    }
+
+
+
     public void Restart()
     {
         SceneManager.LoadScene("shoot");
