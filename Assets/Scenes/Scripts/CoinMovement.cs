@@ -67,7 +67,8 @@ public class CoinMovement : MonoBehaviour
         }
         else
         {
-            
+            timeSpeed = flySpeed * Time.deltaTime;
+            body.AddForce(Vector3.back * timeSpeed, ForceMode.Impulse);
         }
     }
 
