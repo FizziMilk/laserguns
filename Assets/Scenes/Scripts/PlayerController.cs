@@ -21,20 +21,18 @@ namespace shoot
         public float fireRate = 0.5f;
         private float nextFire = 0.0f;
 
-        [Range(0f, 50f)]
-        [Tooltip("Coin pickup radius")]
-        public float coinRadius = 1f;
-
         public GameObject bullet;
         public Transform bulletSpawn;
         public Boundary boundary;
         public Rigidbody playerRb;
         [SerializeField]
         private GameManager gameManager;
+
+
         public UnityEvent onShoot;
         public UnityEvent CoinPickup;
 
-       
+
 
 
         /*public float smoothing = 5;
@@ -43,8 +41,8 @@ namespace shoot
 
         void Start()
         {
-            
-            
+
+
         }
 
         private void FixedUpdate()
@@ -56,18 +54,18 @@ namespace shoot
             //if movement key is pressed
             if (moveHorizontal != 0 || moveVertical != 0 && gameManager.gameOver == false)
             {
-                  playerRb.velocity = new Vector3(moveHorizontal, 0.0f, moveVertical) * speed;
+                playerRb.velocity = new Vector3(moveHorizontal, 0.0f, moveVertical) * speed;
             }
             else
             {
-                  playerRb.velocity = new Vector3(0f, 0f, 0f);
+                playerRb.velocity = new Vector3(0f, 0f, 0f);
             }
-              playerRb.position = new Vector3
-               (
-               Mathf.Clamp(  playerRb.position.x, boundary.xMin, boundary.xMax),
-               1.0f,
-               Mathf.Clamp(  playerRb.position.z, boundary.zMin, boundary.zMax)
-               );
+            playerRb.position = new Vector3
+             (
+             Mathf.Clamp(playerRb.position.x, boundary.xMin, boundary.xMax),
+             1.0f,
+             Mathf.Clamp(playerRb.position.z, boundary.zMin, boundary.zMax)
+             );
 
 
             EulerRotate();
@@ -77,7 +75,7 @@ namespace shoot
         {
             float input = Input.GetAxis("Horizontal");
             Vector3 currAngles = transform.eulerAngles;
-              playerRb.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(currAngles.x, currAngles.y, tiltAngle * input), Time.deltaTime * rotationSpeed);
+            playerRb.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(currAngles.x, currAngles.y, tiltAngle * input), Time.deltaTime * rotationSpeed);
         }
         void Update()
         {
@@ -89,13 +87,6 @@ namespace shoot
                 onShoot.Invoke();
             }
         }
-        private void OnTriggerEnter(Collider other)
-        {
-            if (CompareTag("GoldCoin"))
-            {
-                CoinPickup.Invoke();
-                Destroy(other.gameObject);
-            }
-        }
+
     }
 }

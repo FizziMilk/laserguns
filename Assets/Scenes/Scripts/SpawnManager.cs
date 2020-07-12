@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    private float spawnRangeX = 12;
+    private float spawnRangeX = 10;
     private float spawnPosZ = 16;
     private float startDelay = 2;
     private float spawnInterval = 1.5f;

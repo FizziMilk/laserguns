@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8094468645552627939}
   - component: {fileID: 8094468645549760707}
   - component: {fileID: 8094468645550727683}
-  - component: {fileID: 8094468645554754147}
   - component: {fileID: 8094468644483180257}
+  - component: {fileID: 8094468645554754147}
+  - component: {fileID: 2208336923545415460}
   m_Layer: 0
   m_Name: GoldCoinPickup
   m_TagString: GoldCoin
@@ -82,20 +83,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8094468645554754147
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8094468645552667843}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: f55c2c05e50eb9847a4e227f2d309ecb, type: 3}
 --- !u!54 &8094468644483180257
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -104,11 +91,43 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8094468645552667843}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 4
+  m_Drag: 1
+  m_AngularDrag: 2
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &8094468645554754147
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8094468645552667843}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: f55c2c05e50eb9847a4e227f2d309ecb, type: 3}
+--- !u!114 &2208336923545415460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8094468645552667843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea5d2f3ea61d134c9a9147ac78b2915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outerDetectionRadius: 10
+  detectionRadius: 3
+  flySpeed: 15
+  gameManager: {fileID: 1222889430563280980, guid: 79a23876ccb91a4449520f7eac1eb07f,
+    type: 3}
+  player: {fileID: 6759931165955365168, guid: 43af13b501c133346bf19c20642afe7c, type: 3}

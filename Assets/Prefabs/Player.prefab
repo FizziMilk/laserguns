@@ -148,6 +148,7 @@ MonoBehaviour:
   tiltAngle: -25
   rotationSpeed: 5
   fireRate: 0.2
+  coinRadius: 1
   bullet: {fileID: 6602192591099462033, guid: a8f9a45c7cd3be940b3b852748d6efd1, type: 3}
   bulletSpawn: {fileID: 6759931165955086982}
   boundary:
@@ -155,7 +156,14 @@ MonoBehaviour:
     xMax: 12
     zMin: -12
     zMax: 11
-  myRigidbody: {fileID: 3706498527728523478}
+  playerRb: {fileID: 0}
+  gameManager: {fileID: 0}
+  onShoot:
+    m_PersistentCalls:
+      m_Calls: []
+  CoinPickup:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &1423976854
 BoxCollider:
   m_ObjectHideFlags: 0

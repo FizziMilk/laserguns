@@ -18,25 +18,22 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public GameObject coinRb;
 
-    public TextMeshProUGUI scoreCounter;
-    public float coinCount;
+    public TextMeshProUGUI scoreText;
+    private int score;
 
 
-    void Awake()
-    {
-
-       TMP_Text scoreCounter = GetComponent<TextMeshProUGUI>();
-    }
+    
      void Start()
     {
-        float coinCount = 0;
+        score = 0;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         HealthTracker();
-        scoreCounter.text = "Gold:" + coinCount;
+        
     }
 
     public void HealthTracker()
@@ -79,10 +76,11 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void CoinPickup()
+    public void CoinPickup(int scoreToAdd)
     {
-        coinCount += 1;
-
+        score += scoreToAdd;
+        scoreText.text = "Gold:" + score;
+        
     }
 
 

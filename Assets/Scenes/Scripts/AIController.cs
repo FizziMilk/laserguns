@@ -67,6 +67,7 @@ public class AIController : MonoBehaviour
 
         // No need to check for Rigidbody nullability, it will never be null as its specified in RequireComponent
         body = GetComponent<Rigidbody>();
+        player = GameObject.Find("Player");
     }
 
     private void OnDrawGizmos()
